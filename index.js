@@ -6,6 +6,7 @@ const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
 const FlaggedInvoices = require('./intents/FlaggedInvoices');
 const FuelLocationsIntent = require('./intents/FuelLocations');
 
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
