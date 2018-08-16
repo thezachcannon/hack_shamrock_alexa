@@ -26,7 +26,7 @@ const PurchaseStatusReviewIntent = {
     });
 
     if(total > 0){
-      speechText = "Your total purchases " + slotStatus.toLowerCase() + "are $" + total;
+      speechText = "Your total purchases " + slotStatus.toLowerCase() + " are $" + total;
     }
     else{
       speechText = 'There are no results for that status'
