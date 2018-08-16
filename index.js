@@ -2,6 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
+const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -98,7 +99,8 @@ exports.handler = skillBuilder
     PurchaseIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
-    SessionEndedRequestHandler
+    SessionEndedRequestHandler,
+    PurchaseStatusReviewIntent
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();

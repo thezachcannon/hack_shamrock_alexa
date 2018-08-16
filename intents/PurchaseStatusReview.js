@@ -1,14 +1,15 @@
 const PurchaseStatusReviewIntent = {
     canHandle(handlerInput) {
       return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-        && handlerInput.requestEnvelope.request.intent.name === 'PURCHASE';
+        && handlerInput.requestEnvelope.request.intent.name === 'PurchaseStatusReview';
     },
     handle(handlerInput) {
-      const speechText = 'Hello World!';
-  
+      const speechText = 'Craig Stranger Thing rules';
       return handlerInput.responseBuilder
         .speak(speechText)
         .withSimpleCard('Hello World', speechText)
         .getResponse();
     },
   };
+
+module.exports = PurchaseStatusReviewIntent;
