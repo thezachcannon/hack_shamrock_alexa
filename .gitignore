@@ -8,5 +8,6 @@ jspm_packages
 # Config
 config.yml
 database.json
+alexaPayload.json
 
 .DS_Store
