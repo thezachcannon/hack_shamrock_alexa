@@ -21,21 +21,6 @@ const LaunchRequestHandler = {
   },
 };
 
-const PurchaseIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'Purchase';
-  },
-  handle(handlerInput) {
-    const speechText = 'Road Rage!';
-
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Road Rage', speechText)
-      .getResponse();
-  },
-};
-
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -98,7 +83,6 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    PurchaseIntentHandler,
     FlaggedInvoices,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
