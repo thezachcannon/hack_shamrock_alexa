@@ -2,6 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
+const FlaggedInvoices = require('intents/FlaggedInvoices');
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -96,6 +97,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     PurchaseIntentHandler,
+    FlaggedInvoices,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
