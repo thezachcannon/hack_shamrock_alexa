@@ -16,12 +16,15 @@ const FlaggedInvoicesIntentHandler = {
 
       let invoiceNumber = '';
       //const speechText = 'test ' + flagged[0].invoice_number;
-      flagged.forEach(x => invoiceNumber += ' Invoice number ' + x.invoice_number);
-      const speechText = 'You currently have ' + flagged.length + ' invoices.' + invoiceNumber;
-      return handlerInput.responseBuilder
-        .speak(speechText)
-        .withSimpleCard('Flagged Invoices', speechText)
-        .getResponse();
+      
+      const speechText = 'You currently have ' + flagged.length + ' invoices.';
+      var invoiceText = '';
+      flagged.forEach(x => invoiceText += `<say-as interpret-as='characters'>${x.invoice_number}</say-as>` );
+      return {"outputSpeech": {
+        "type": "SSML",
+        "ssml": `<speak>${speechText} ${invoiceText}</speak>`
+    }
+    }
     },
   };
 
