@@ -4,6 +4,8 @@
 const Alexa = require('ask-sdk-core');
 const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
 const FlaggedInvoices = require('./intents/FlaggedInvoices');
+const FuelLocationsIntent = require('./intents/FuelLocations');
+
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -86,7 +88,8 @@ exports.handler = skillBuilder
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
-    PurchaseStatusReviewIntent
+    PurchaseStatusReviewIntent,
+    FuelLocationsIntent
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();
