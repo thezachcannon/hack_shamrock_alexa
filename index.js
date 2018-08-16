@@ -4,6 +4,8 @@
 const Alexa = require('ask-sdk-core');
 const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
 const FlaggedInvoices = require('./intents/FlaggedInvoices');
+const FuelLocationsIntent = require('./intents/FuelLocations');
+
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -15,21 +17,6 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Road Rage', speechText)
-      .getResponse();
-  },
-};
-
-const PurchaseIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'Purchase';
-  },
-  handle(handlerInput) {
-    const speechText = 'Road Rage!';
-
-    return handlerInput.responseBuilder
-      .speak(speechText)
       .withSimpleCard('Road Rage', speechText)
       .getResponse();
   },
@@ -97,12 +84,12 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    PurchaseIntentHandler,
     FlaggedInvoices,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
-    PurchaseStatusReviewIntent
+    PurchaseStatusReviewIntent,
+    FuelLocationsIntent
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();
