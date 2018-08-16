@@ -4,10 +4,10 @@ const PurchaseStatusReviewIntent = {
         && handlerInput.requestEnvelope.request.intent.name === 'PurchaseStatusReview';
     },
     handle(handlerInput) {
-      const speechText = 'Craig Stranger Thing rules';
+      const speechText = 'Yo Yo Yo, it is Alexa';
       return handlerInput.responseBuilder
         .speak(speechText)
-        .withSimpleCard('Hello World', speechText)
+        .withSimpleCard('Road Rage', speechText)
         .getResponse();
     },
   };

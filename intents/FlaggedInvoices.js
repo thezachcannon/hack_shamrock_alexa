@@ -12,3 +12,5 @@ const FlaggedInvoicesIntentHandler = {
         .getResponse();
     },
   };
+
+  module.exports = FlaggedInvoicesIntentHandler

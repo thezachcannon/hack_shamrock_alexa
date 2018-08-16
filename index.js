@@ -3,7 +3,7 @@
 
 const Alexa = require('ask-sdk-core');
 const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
-const FlaggedInvoices = require('intents/FlaggedInvoices');
+const FlaggedInvoices = require('./intents/FlaggedInvoices');
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -15,7 +15,7 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Road Rage', speechText)
       .getResponse();
   },
 };
@@ -26,11 +26,11 @@ const PurchaseIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'Purchase';
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
+    const speechText = 'Road Rage!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Road Rage', speechText)
       .getResponse();
   },
 };
@@ -46,7 +46,7 @@ const HelpIntentHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Road Rage', speechText)
       .getResponse();
   },
 };
@@ -62,7 +62,7 @@ const CancelAndStopIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Road Rage', speechText)
       .getResponse();
   },
 };

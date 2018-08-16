@@ -58,7 +58,7 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  helloWorld:
+  roadRage:
     handler: index.handler
     events:
       - alexaSkill: ${file(./config.yml):alexa_skill_id}
