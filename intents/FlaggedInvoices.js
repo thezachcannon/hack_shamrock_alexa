@@ -12,12 +12,9 @@ const FlaggedInvoicesIntentHandler = {
           var f = i.invoices.filter(x => x.flagged == true);
           f.forEach(p => flagged.push(p));
       });
-      //const speechText = 'Turn this mother to '+ flagged.length;
 
-      let invoiceNumber = '';
-      //const speechText = 'test ' + flagged[0].invoice_number;
-      
-      const speechText = 'You currently have ' + flagged.length + ' invoices.';
+      const pluralizeInvoice = flagged.length > 1 ? 'invoices' : 'invoice'
+      const speechText = `You currently have ${flagged.length} flagged ${pluralizeInvoice}` ;
       var invoiceText = '';
       flagged.forEach(x => invoiceText += `<say-as interpret-as='characters'>${x.invoice_number}</say-as>` );
       return {"outputSpeech": {
