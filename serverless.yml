@@ -59,7 +59,7 @@ provider:
 
 functions:
   helloWorld:
-    handler: intents/helloWorld/index.handler
+    handler: index.handler
     events:
       - alexaSkill: ${file(./config.yml):alexa_skill_id}
 
