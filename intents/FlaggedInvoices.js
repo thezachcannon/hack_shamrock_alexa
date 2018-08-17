@@ -14,12 +14,12 @@ const FlaggedInvoicesIntentHandler = {
       });
 
       const pluralizeInvoice = flagged.length > 1 ? 'invoices' : 'invoice'
-      const speechText = `You currently have ${flagged.length} flagged ${pluralizeInvoice}` ;
+      const speechText = `You currently have ${flagged.length} flagged ${pluralizeInvoice}`;
       var invoiceText = '';
-      flagged.forEach(x => invoiceText += `<say-as interpret-as='characters'>${x.invoice_number}</say-as>` );
+      flagged.forEach(x => invoiceText += `<say-as interpret-as='characters'>${x.invoice_number}</say-as><break time="3s"/>` );
       return {"outputSpeech": {
         "type": "SSML",
-        "ssml": `<speak>${speechText} ${invoiceText}</speak>`
+        "ssml": `<speak>${speechText} <break time="3s"/> ${invoiceText}</speak>`
     }
     }
     },
