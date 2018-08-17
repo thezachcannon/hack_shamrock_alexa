@@ -16,10 +16,10 @@ const FlaggedInvoicesIntentHandler = {
       const pluralizeInvoice = flagged.length > 1 ? 'invoices' : 'invoice'
       const speechText = `You currently have ${flagged.length} flagged ${pluralizeInvoice}`;
       var invoiceText = '';
-      flagged.forEach(x => invoiceText += `<say-as interpret-as='characters'>${x.invoice_number}</say-as><break time="3s"/>` );
+      flagged.forEach(x => invoiceText += `<break time="0.5s"/><say-as interpret-as='characters'>${x.invoice_number}</say-as> ` );
       return {"outputSpeech": {
         "type": "SSML",
-        "ssml": `<speak>${speechText} <break time="3s"/> ${invoiceText}</speak>`
+        "ssml": `<speak>${speechText} ${invoiceText}</speak>`
     }
     }
     },
