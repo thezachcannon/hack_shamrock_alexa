@@ -1,5 +1,5 @@
 const data = require("./small-database")
-const enums = require('./enums')
+const mongo = require('mongodb').MongoClient
 
 // data.map((purchase)=> {
 //     var randStatus = enums.PurchaseReviewValidStatusSlot[Math.floor(Math.random() * enums.PurchaseReviewValidStatusSlot.length)];
@@ -19,16 +19,28 @@ let phraseArray = ["Don't Pick Corn Past The Apples Day", "Your Invoice is too b
 //         x = x-1
 //     }
 // }
-
-data.map((purchases) => {
-    purchases.invoices.map((invoice)=> {
-        if(invoice.flagged) {
-            invoice.notes = phraseArray[Math.floor(Math.random() * phraseArray.length)]
-            console.log(invoice.notes)
-        }
-    })
+// let count = 0;
+// data.map((purchases) => {
+//     count ++
+//     purchases.invoices.map((invoice)=> {
+//         if(invoice.flagged) {
+//             invoice.invoice_number = "RR" + count
+            
+//             invoice.notes = phraseArray[Math.floor(Math.random() * phraseArray.length)]
+//             console.log(invoice.notes)
+//         }
+//     })
+// })
+let mongoConnect
+mongo.connect('mongodb://qb07rOxaft6IIdvKISWg:4gxFulKimPvjK2CIEuUk0TtB7TynlfHOT6pbmiIXs@ds017604-a1.mlab.com:17604,ds017604-a0.mlab.com:17604/fuel-dev?replicaSet=rs-ds017604', function (err,db){
+    if(!err) {
+        console.log("We are connected")
+        db.close()
+    }
+    else
+    {
+        console.log(err)
+    }
 })
 
-
-
-console.log(JSON.stringify(data))
+// console.log(JSON.stringify(mongoConnect))

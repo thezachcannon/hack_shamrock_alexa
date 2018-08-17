@@ -86,11 +86,12 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     FlaggedInvoicesIntent,
     InvoiceNotesIntent,
+    FuelLocationsIntent,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
-    PurchaseStatusReviewIntent,
-    FuelLocationsIntent
+    PurchaseStatusReviewIntent,    
+
   )
   .addErrorHandlers(ErrorHandler)
   .lambda();

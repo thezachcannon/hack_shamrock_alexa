@@ -8,9 +8,9 @@ const InvoiceNotesIntent = {
     handle(handlerInput) {
         let notes = ''
         let invoiceSlot = handlerInput.requestEnvelope.request.intent.slots.Invoice.value;
-
+        console.log(invoiceSlot)
         data.map((purchase) => {
-            let indexNo = purchase.invoices.findIndex((invoice) => invoice.invoice_number === invoiceSlot);
+            let indexNo = purchase.invoices.findIndex((invoice) => invoice.invoice_number.toLowerCase() === invoiceSlot.toLowerCase());
             if (indexNo > -1) {
                 if (purchase.invoices[indexNo].notes) {
                     notes = purchase.invoices[indexNo].notes
