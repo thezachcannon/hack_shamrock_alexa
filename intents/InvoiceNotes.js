@@ -2,30 +2,32 @@ const data = require('../small-database');
 
 const InvoiceNotesIntent = {
     canHandle(handlerInput) {
-      return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-        && handlerInput.requestEnvelope.request.intent.name === 'InvoiceNotes';
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
+            handlerInput.requestEnvelope.request.intent.name === 'InvoiceNotes';
     },
     handle(handlerInput) {
-        let slotInvoice = handlerInput.requestEnvelope.request.intent.slots.Invoice.value;
+        let notes = ''
+        let invoiceSlot = handlerInput.requestEnvelope.request.intent.slots.Invoice.value;
 
-        var notes = '';
-        var purchase = data.findIndex(x => x.invoices.findIndex(y => y.invoice_number == slotInvoice));
-console.log(slotInvoice);
-        //console.log(purchase);
-        var i = data.filter(x => x.invoices.filter(y => y.invoice_number == slotInvoice.value))[0].invoices[0];
-        if(i && i.notes){
-            notes = i.notes;
-        }
-        else{
-            notes = 'No invoice was found!';
-        }
+        data.map((purchase) => {
+            let indexNo = purchase.invoices.findIndex((invoice) => invoice.invoice_number === invoiceSlot);
+            if (indexNo > -1) {
+                if (purchase.invoices[indexNo].notes) {
+                    notes = purchase.invoices[indexNo].notes
+                } else {
+                    notes = 'There are no notes for this invoice.'
+                }
+            }
+        })
 
-        return {"outputSpeech": {
-        "type": "SSML",
-        "ssml": `<speak>${notes}</speak>`
-    }
-    }
+        notes = notes == '' ? 'Invoice was not found' : notes
+        return {
+            "outputSpeech": {
+                "type": "SSML",
+                "ssml": `<speak>${notes}</speak>`
+            }
+        }
     },
-  };
+};
 
-  module.exports = InvoiceNotesIntent
+module.exports = InvoiceNotesIntent
