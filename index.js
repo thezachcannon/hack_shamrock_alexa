@@ -3,9 +3,9 @@
 
 const Alexa = require('ask-sdk-core');
 const PurchaseStatusReviewIntent = require('./intents/PurchaseStatusReview')
-const FlaggedInvoices = require('./intents/FlaggedInvoices');
+const FlaggedInvoicesIntent = require('./intents/FlaggedInvoices');
 const FuelLocationsIntent = require('./intents/FuelLocations');
-
+const InvoiceNotesIntent = require('./intents/InvoiceNotes');
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -84,7 +84,8 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    FlaggedInvoices,
+    FlaggedInvoicesIntent,
+    InvoiceNotesIntent,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
