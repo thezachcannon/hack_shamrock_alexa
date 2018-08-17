@@ -73,7 +73,7 @@ const ErrorHandler = {
     console.log(`Error handled: ${error.message}`);
 
     return handlerInput.responseBuilder
-    .speak('You guys are idiots, stop trying!')
+    .speak('Beep Boop There Was An Error')
       .reprompt('Sorry, I can\'t understand the command. Please say again.')
       .getResponse();
   },
